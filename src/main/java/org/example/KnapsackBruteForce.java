@@ -17,6 +17,15 @@ public class KnapsackBruteForce
 
     public boolean[] solve()
     {
-        return null;
+        int maxWeight;
+        int maxProfit;
+        int currentWeight;
+        int currentProfit;
+
+        boolean[][] solutions;
+        boolean[] currentSolution;
+        boolean[] maxSolution;
+
+        int numSolutions = (int) Math.pow(2, numOfItems);
     }
 }
