@@ -44,6 +44,16 @@ public class KnapsackBruteForce
 
     private int getProfit(boolean[] maxSolution)
     {
+        int profit = 0;
 
+        for(int i = 0; i < maxSolution.length; i++)
+        {
+            if(maxSolution[i])
+            {
+                profit += values[i];
+            }
+        }
+
+        return profit;
     }
 }
