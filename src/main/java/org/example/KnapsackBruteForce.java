@@ -15,7 +15,7 @@ public class KnapsackBruteForce
         numOfItems = weights.length;
     }
 
-    public boolean[] solve(int[] weights, int[] values, int n, int w)
+    public boolean[] solve()
     {
         int maxWeight;
         int maxProfit;
@@ -24,7 +24,7 @@ public class KnapsackBruteForce
 
         int numSolutions = (int) Math.pow(2, numOfItems);
 
-        boolean[][] solutions = new boolean[numSolutions][];
+        boolean[][] solutions = new boolean[numSolutions][numOfItems];
         boolean[] currentSolution;
         boolean[] maxSolution;
 
@@ -46,7 +46,7 @@ public class KnapsackBruteForce
             currentWeight = getWeight(solutions[i]);
             currentProfit = getProfit(solutions[i]);
 
-            if((currentWeight <= w) && (currentProfit > maxProfit))
+            if((currentWeight <= knapSackCap) && (currentProfit > maxProfit))
             {
                 maxSolution = solutions[i];
                 maxProfit = currentProfit;
