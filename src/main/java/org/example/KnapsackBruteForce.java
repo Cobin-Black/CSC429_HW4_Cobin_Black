@@ -22,11 +22,11 @@ public class KnapsackBruteForce
         int currentWeight;
         int currentProfit;
 
-        boolean[][] solutions = new boolean[0][];
+        int numSolutions = (int) Math.pow(2, numOfItems);
+
+        boolean[][] solutions = new boolean[numSolutions][];
         boolean[] currentSolution;
         boolean[] maxSolution;
-
-        int numSolutions = (int) Math.pow(2, numOfItems);
 
         /*
             This generates all the possible solutions because brute force
