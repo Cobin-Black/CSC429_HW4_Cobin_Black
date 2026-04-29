@@ -58,7 +58,17 @@ public class KnapsackBruteForce
 
     private int getWeight(boolean[] solution)
     {
-        return 0;
+        int weight = 0;
+
+        for(int i = 0; i < solution.length; i++)
+        {
+            if(solution[i])
+            {
+                weight += weights[i];
+            }
+        }
+
+        return weight;
     }
 
     private int getProfit(boolean[] maxSolution)
