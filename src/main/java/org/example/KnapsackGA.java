@@ -58,6 +58,14 @@ public class KnapsackGA
         return maxFitnessIndividual;
     }
 
+    private void calculateFitnessProfitForAll()
+    {
+        for(int i = 0; i <= population.length - 1; i++)
+        {
+            fitness[i] = calculateFitness(population[i]);
+        }
+    }
+
     private int calculateFitness(boolean[] solution)
     {
         int solutionProfit = 0;
