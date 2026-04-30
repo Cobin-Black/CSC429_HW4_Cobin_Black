@@ -12,7 +12,7 @@ public class KnapsackGA
 
     //Pseudocode Variables
     int popSize = 20;
-    int numGens = 60;
+    int numGens = 10;
 
     boolean[][] population;
     int[] fitness = new int[popSize];
