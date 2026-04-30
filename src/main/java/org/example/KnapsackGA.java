@@ -30,7 +30,15 @@ public class KnapsackGA
         boolean[][] nextGenerationSolutions = new boolean[popSize][numOfItems];
         boolean[] maxFitnessIndividual = new boolean[numOfItems];
 
-        population = new boolean[randomSelect.nextInt()][randomSelect.nextInt()];
+        //This is the part of the pseudocode that wanted to population to have random solutions
+        population = new boolean[popSize][numOfItems];
+        for(int i = 0; i < popSize; i++)
+        {
+            for(int j = 0; j < numOfItems; j++)
+            {
+                population[i][j] = randomSelect.nextBoolean();
+            }
+        }
 
         for(int i = 1; i < numGens; i++)
         {
