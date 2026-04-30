@@ -34,7 +34,21 @@ public class KnapsackBruteForce
         */
         for(int i = 0; i <= numSolutions - 1; i++)
         {
-            currentSolution = new boolean[i];
+            currentSolution = new boolean[numOfItems];
+
+            //Needed an inner loop to help check if the bit is set in the array
+            for(int j = 0; j <= numOfItems - 1; j++)
+            {
+                /*
+                    This shifts the bits in the place it needs to be in the array
+                        then it sets the value to a boolean.
+
+                    This was new to me, and it wasn't working without the loop
+                        I did need to look up how to do this.
+                */
+                currentSolution[j] = ((i >> j) & 1) == 1;
+            }
+
             solutions[i] = currentSolution;
         }
 
