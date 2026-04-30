@@ -39,14 +39,37 @@ public class KnapsackGA
             population = nextGenerationSolutions;
         }
 
+        boolean[] currentMaxFit = new boolean[numOfItems];
         for(int i = 0; i < population.length; i++)
         {
-            if(population[i] > maxFitnessIndividual[i])
+            if(calculateFitness(population[i]) > calculateFitness(currentMaxFit))
             {
-
+                maxFitnessIndividual = population[i];
             }
         }
 
         return maxFitnessIndividual;
+    }
+
+    private int calculateFitness(boolean[] solution)
+    {
+        int solutionProfit = 0;
+        int solutionWeight = 0;
+
+        for(int i = 0; i <= solution.length - 1; i++)
+        {
+            if(solution[i])
+            {
+                solutionProfit = solutionProfit + values[i];
+                solutionWeight = solutionWeight + weights[i];
+            }
+        }
+
+        if(solutionWeight > knapSackCap)
+        {
+            solutionProfit = 0;
+        }
+
+        return solutionProfit;
     }
 }
