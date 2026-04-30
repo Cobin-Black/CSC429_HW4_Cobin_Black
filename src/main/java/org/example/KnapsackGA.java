@@ -40,17 +40,16 @@ public class KnapsackGA
             }
         }
 
-        for(int i = 1; i < numGens; i++)
+        for(int i = 1; i <= numGens; i++)
         {
             calculateFitnessProfitForAll();
             nextGenerationSolutions = createNextGeneration();
             population = nextGenerationSolutions;
         }
 
-        boolean[] currentMaxFit = new boolean[numOfItems];
         for(int i = 0; i < population.length; i++)
         {
-            if(calculateFitness(population[i]) > calculateFitness(currentMaxFit))
+            if(calculateFitness(population[i]) > calculateFitness(maxFitnessIndividual))
             {
                 maxFitnessIndividual = population[i];
             }
