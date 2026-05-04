@@ -77,5 +77,12 @@ public class Main {
         System.out.println("\nTotal Value: " + gaTotalValue);
         System.out.println("Total Weight: " + gaTotalWeight);
         //#endregion
+
+        //#region Dynamic Prog Section
+        int[] weightsDP = {8, 3, 1, 12, 5, 3, 4};
+        int[] valuesDP = {60, 140, 13, 200, 35, 88, 5};
+        int knapSackCapDP = 20;
+
+        KnapsackDP dp = new KnapsackDP(weightsDP, valuesDP, knapSackCapDP);
     }
 }
