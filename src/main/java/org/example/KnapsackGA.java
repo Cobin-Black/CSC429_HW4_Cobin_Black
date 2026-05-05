@@ -5,17 +5,17 @@ import java.util.Random;
 public class KnapsackGA
 {
     //Spec Variables
-    int[] weights;
-    int[] values;
-    int numOfItems;
-    int knapSackCap;
+    private int[] weights;
+    private int[] values;
+    private int numOfItems;
+    private int knapSackCap;
 
     //Pseudocode Variables
     int popSize = 20;
     int numGens = 10;
     int mutationRate = 25;
 
-    boolean[][] population;
+    private boolean[][] population;
     int[] fitness = new int[popSize];
 
     Random randomSelect = new Random();

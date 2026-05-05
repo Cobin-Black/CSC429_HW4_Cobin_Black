@@ -2,10 +2,10 @@ package org.example;
 
 public class KnapsackBruteForce
 {
-    int[] weights;
-    int[] values;
-    int numOfItems;
-    int knapSackCap;
+    private int[] weights;
+    private int[] values;
+    private int numOfItems;
+    private int knapSackCap;
 
     KnapsackBruteForce(int[] weights, int[] values, int knapSackCap)
     {
