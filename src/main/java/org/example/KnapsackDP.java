@@ -3,10 +3,13 @@ package org.example;
 public class KnapsackDP
 {
     //Spec Variables
-    int[] weights;
-    int[] values;
-    int numOfItems;
-    int knapSackCap;
+    private int[] weights;
+    private int[] values;
+    private int numOfItems;
+    private int knapSackCap;
+
+    //PseudoCode Variables
+    private int[][] dp;
 
     public KnapsackDP(int[] weights, int[] values, int knapSackCap)
     {
@@ -18,7 +21,7 @@ public class KnapsackDP
 
     public int solve()
     {
-        int[][] dp = new int[numOfItems + 1][knapSackCap + 1];
+        dp = new int[numOfItems + 1][knapSackCap + 1];
 
         int currentItemProfit;
         int currentItemWeight;
@@ -61,4 +64,21 @@ public class KnapsackDP
 
         return dp[numOfItems][knapSackCap];
     }//end of solve()
+
+    public boolean[] getSelectedItems()
+    {
+        boolean[] itemsUsed = new boolean[numOfItems];
+
+        int j = knapSackCap;
+        for(int i = numOfItems; i >= 1; i--)
+        {
+            if(dp[i][j] != dp[i - 1][j])
+            {
+                itemsUsed[i - 1] = true;
+                j -= weights[i - 1];
+            }
+        }
+
+        return itemsUsed;
+    }//end of getSelectedItems()
 }
