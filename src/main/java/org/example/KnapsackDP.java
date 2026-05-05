@@ -3,10 +3,13 @@ package org.example;
 public class KnapsackDP
 {
     //Spec Variables
-    int[] weights;
-    int[] values;
-    int numOfItems;
-    int knapSackCap;
+    private int[] weights;
+    private int[] values;
+    private int numOfItems;
+    private int knapSackCap;
+
+    //PseudoCode Variables
+    private int[][] dp;
 
     public KnapsackDP(int[] weights, int[] values, int knapSackCap)
     {
@@ -15,4 +18,67 @@ public class KnapsackDP
         this.knapSackCap = knapSackCap;
         numOfItems = weights.length;
     }
+
+    public int solve()
+    {
+        dp = new int[numOfItems + 1][knapSackCap + 1];
+
+        int currentItemProfit;
+        int currentItemWeight;
+        int currentItemValue;
+        int previousItemProfit;
+
+        for(int i = 0; i < knapSackCap; i++)
+        {
+            dp[0][i] = 0;
+        }
+
+        for(int i = 1; i <= numOfItems; i++)
+        {
+            currentItemWeight = weights[i - 1];
+            currentItemValue = values[i - 1];
+
+            for(int j = 0; j <= knapSackCap; j++)
+            {
+                previousItemProfit = dp[i - 1][j];
+
+                if(currentItemWeight > j)
+                {
+                    dp[i][j] = previousItemProfit;
+                }
+                else
+                {
+                    currentItemProfit = currentItemValue + dp[i - 1][j - currentItemWeight];
+
+                    if(currentItemProfit > previousItemProfit)
+                    {
+                        dp[i][j] = currentItemProfit;
+                    }
+                    else
+                    {
+                        dp[i][j] = previousItemProfit;
+                    }
+                }
+            }
+        }
+
+        return dp[numOfItems][knapSackCap];
+    }//end of solve()
+
+    public boolean[] getSelectedItems()
+    {
+        boolean[] itemsUsed = new boolean[numOfItems];
+
+        int j = knapSackCap;
+        for(int i = numOfItems; i >= 1; i--)
+        {
+            if(dp[i][j] != dp[i - 1][j])
+            {
+                itemsUsed[i - 1] = true;
+                j -= weights[i - 1];
+            }
+        }
+
+        return itemsUsed;
+    }//end of getSelectedItems()
 }

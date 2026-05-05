@@ -77,5 +77,34 @@ public class Main {
         System.out.println("\nTotal Value: " + gaTotalValue);
         System.out.println("Total Weight: " + gaTotalWeight);
         //#endregion
+
+        //#region Dynamic Prog Section
+        int[] weightsDP = {8, 3, 1, 12, 5, 3, 4};
+        int[] valuesDP = {60, 140, 13, 200, 35, 88, 5};
+        int knapSackCapDP = 20;
+
+        KnapsackDP dp = new KnapsackDP(weightsDP, valuesDP, knapSackCapDP);
+
+        System.out.println("\n-------------------------------------");
+        System.out.println("Dynamic Programming Method:");
+        for(int i = 1; i <= valuesDP.length; i++)
+        {
+            System.out.printf("Item %d -> Value: %4d | Weight: %d\n", i, valuesDP[i - 1], weightsDP[i - 1]);
+        }
+
+        System.out.println("\nDynamic Programming Solution:");
+
+        int dpSolution = dp.solve();
+        boolean[] dpItemsUsed = dp.getSelectedItems();
+
+        System.out.printf("Knapsack Weight: %d\n\n", knapSackCapDP);
+
+        for(int i = 1; i <= valuesDP.length; i++)
+        {
+            System.out.printf("Item %d -> Is Used: %b\n", i, dpItemsUsed[i - 1]);
+        }
+
+        System.out.printf("\nMaximum Profit: %d", dpSolution);
+        //#endregion
     }
 }
