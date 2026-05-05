@@ -18,7 +18,7 @@ public class KnapsackDP
 
     public int solve()
     {
-        int[][] dp = new int[numOfItems][weights.length];
+        int[][] dp = new int[numOfItems + 1][knapSackCap + 1];
 
         int currentItemProfit;
         int currentItemWeight;
