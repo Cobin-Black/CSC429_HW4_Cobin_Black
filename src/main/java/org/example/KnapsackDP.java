@@ -25,17 +25,17 @@ public class KnapsackDP
         int currentItemValue;
         int previousItemProfit;
 
-        for(int i = 0; i < weights.length; i++)
+        for(int i = 0; i < knapSackCap; i++)
         {
             dp[0][i] = 0;
         }
 
-        for(int i = 1; i < numOfItems; i++)
+        for(int i = 1; i <= numOfItems; i++)
         {
             currentItemWeight = weights[i - 1];
             currentItemValue = values[i - 1];
 
-            for(int j = 0; j < weights.length; j++)
+            for(int j = 0; j <= knapSackCap; j++)
             {
                 previousItemProfit = dp[i - 1][j];
 
@@ -59,6 +59,6 @@ public class KnapsackDP
             }
         }
 
-        return dp[numOfItems - 1][weights.length];
+        return dp[numOfItems][knapSackCap];
     }//end of solve()
 }
